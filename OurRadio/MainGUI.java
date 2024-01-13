@@ -67,6 +67,21 @@ public class MainGUI {
 
             }
         });
+        btnAmFm.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (radio.isOn()) {
+                    if (radio.isAM()) {
+                        btnAmFm.setIcon(btnAmFm.getSelectedIcon());
+
+                    } else {
+                        btnAmFm.setIcon(btnAmFm.getDisabledIcon());
+                    }
+
+                    radio.switchAMFM();
+                }
+            }
+        });
     }
 
 

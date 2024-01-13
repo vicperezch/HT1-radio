@@ -18,6 +18,7 @@ public class Radio implements IRadio {
         AMButtons = new int[12];
         FMButtons = new int[12];
         stateOnOff = false;
+        stateAMFM = true;
     }
 
     @Override
@@ -34,7 +35,6 @@ public class Radio implements IRadio {
     @Override
     public boolean isOn() {
         return stateOnOff;
-
     }
 
     @Override
@@ -43,6 +43,9 @@ public class Radio implements IRadio {
      
     }
 
+    /**
+     * Enciende o apaga la radio
+     */
     @Override
     public void switchOnOff() {
         if (!isOn()) {
@@ -50,19 +53,25 @@ public class Radio implements IRadio {
         } else {
             stateOnOff = false;
         }
-        System.out.println(stateOnOff);
     }
 
+    /**
+     * Cambia el modo de la radio entre AM y FM
+     */
     @Override
     public void switchAMFM() {
+        if (this.isOn()) {
+            if (this.isAM()) {
+                stateAMFM = false;
 
+            } else {
+                stateAMFM = true;
+            }
+        }
     }
 
     @Override
     public double nextStation() {
         return 0;
-    
     }
-
-    
 }

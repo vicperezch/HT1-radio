@@ -326,7 +326,7 @@
           <maximumSize width="600" height="75"/>
           <minimumSize width="600" height="75"/>
           <opaque value="true"/>
-          <preferredSize width="600" height="75"/>
+          <preferredSize width="600" height="85"/>
         </properties>
         <border type="line">
           <size top="15" left="0" bottom="15" right="0"/>
@@ -352,7 +352,15 @@
           <component id="17b99" class="javax.swing.JButton" binding="btnAmFm">
             <constraints/>
             <properties>
-              <text value="Button"/>
+              <background color="-788993"/>
+              <borderPainted value="false"/>
+              <contentAreaFilled value="false"/>
+              <disabledIcon value="img/am.png"/>
+              <font name="Microsoft Tai Le" size="12"/>
+              <foreground color="-16775935"/>
+              <icon value="img/am.png"/>
+              <selectedIcon value="img/fm.png"/>
+              <text value=""/>
             </properties>
           </component>
         </children>
