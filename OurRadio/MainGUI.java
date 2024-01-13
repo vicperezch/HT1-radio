@@ -9,7 +9,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Struct;
 
 public class MainGUI {
 
@@ -18,6 +17,22 @@ public class MainGUI {
     private int frameHeight;
     private JPanel pnlMain;
     private JButton btnPower;
+    private JPanel pnlBody;
+    private JPanel pnlHeader;
+    private JButton button1;
+    private JButton button2;
+    private JButton button3;
+    private JButton button4;
+    private JButton button5;
+    private JButton button6;
+    private JButton button7;
+    private JButton button8;
+    private JButton button9;
+    private JButton button10;
+    private JButton button11;
+    private JButton button12;
+    private JButton button13;
+    private JButton button14;
 
     /**
      * Constructor de MainGUI
