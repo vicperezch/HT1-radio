@@ -19,20 +19,21 @@ public class MainGUI {
     private JButton btnPower;
     private JPanel pnlBody;
     private JPanel pnlHeader;
-    private JButton button1;
-    private JButton button2;
-    private JButton button3;
-    private JButton button4;
-    private JButton button5;
-    private JButton button6;
-    private JButton button7;
-    private JButton button8;
-    private JButton button9;
-    private JButton button10;
-    private JButton button11;
-    private JButton button12;
-    private JButton button13;
-    private JButton button14;
+    private JButton btnNextStation;
+    private JButton btnAmFm;
+    private JButton btn6;
+    private JButton btn5;
+    private JButton btn4;
+    private JButton btn3;
+    private JButton btn2;
+    private JButton btn1;
+    private JButton btn11;
+    private JButton btn10;
+    private JButton btn9;
+    private JButton btn8;
+    private JButton btn7;
+    private JLabel lblStation;
+    private JButton btn12;
 
     /**
      * Constructor de MainGUI
@@ -46,7 +47,7 @@ public class MainGUI {
         myFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         myFrame.setSize(frameWidth, frameHeight);
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-        myFrame.setLocation(dim.width/2 - myFrame.getSize().width/2, dim.height/2-myFrame.getSize().height/2);
+        myFrame.setLocationRelativeTo(null);
         myFrame.setResizable(false);
         myFrame.setVisible(true);
 
