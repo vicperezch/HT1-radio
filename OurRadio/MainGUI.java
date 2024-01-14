@@ -58,12 +58,12 @@ public class MainGUI {
 
                 if (!radio.isOn()) {
                     btnPower.setIcon(btnPower.getSelectedIcon());
-
+                    lblStation.setText(Double.toString(530.0));
                 } else {
                     btnPower.setIcon(btnPower.getDisabledIcon());
-
+                    lblStation.setText("");
                 }
-                lblStation.setText("");
+
                 radio.switchOnOff();
             }
         });
@@ -89,7 +89,9 @@ public class MainGUI {
         btnNextStation.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                lblStation.setText(String.format("%.1f", radio.nextStation()));
+                if (radio.isOn()) {
+                    lblStation.setText(String.format("%.1f", radio.nextStation()));
+                }
             }
         });
 
@@ -136,5 +138,15 @@ public class MainGUI {
                 timer.stop();
             }
         }
-    }
-}
+
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            super.mouseClicked(e);
+
+            if (radio.isOn()) {
+                if (radio.selectStation(Integer.parseInt(((JButton) e.getSource()).getText())) != 0.0) {
+                    lblStation.setText(String.format("%.1f", (radio.selectStation(Integer.parseInt(((JButton) e.getSource()).getText())))));
+                }
+            }
+        }
+    }}

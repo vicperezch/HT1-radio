@@ -20,6 +20,7 @@ public class Radio implements IRadio {
         FMButtons = new double[12];
         stateOnOff = false;
         stateAMFM = true;
+        this.currentStation = 530.0;
     }
 
 
@@ -65,8 +66,19 @@ public class Radio implements IRadio {
         return stateOnOff;
     }
 
+    /**
+     * Selecciona una estación previamente guardada
+     * @param buttonID ID del botón seleccionado por el usuario
+     * @return Estación seleccionada
+     */
     @Override
-    public double selectStation(int buttonID) {return buttonID;}
+    public double selectStation(int buttonID) {
+        if (this.isAM()) {
+            return AMButtons[buttonID-1];
+        } else {
+            return FMButtons[buttonID-1];
+        }
+    }
 
     /**
      * Enciende o apaga la radio
@@ -101,18 +113,20 @@ public class Radio implements IRadio {
      */
     @Override
     public double nextStation() {
-        if(this.isAM()){
-            if(currentStation < 1610.0){
-                currentStation +=10;
-            } else {
-                currentStation = 530.0;
-            }
+        if (this.isOn()) {
+            if(this.isAM()){
+                if(currentStation < 1610.0){
+                    currentStation +=10;
+                } else {
+                    currentStation = 530.0;
+                }
 
-        } else {
-            if(currentStation <107.9){
-                currentStation +=0.2;
             } else {
-                currentStation = 87.9;
+                if(currentStation <107.9){
+                    currentStation +=0.2;
+                } else {
+                    currentStation = 87.9;
+                }
             }
         }
         return currentStation;
