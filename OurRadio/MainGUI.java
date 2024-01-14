@@ -7,8 +7,7 @@
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 
 public class MainGUI {
 
@@ -34,6 +33,8 @@ public class MainGUI {
     private JButton btn7;
     private JLabel lblStation;
     private JButton btn12;
+    private Timer timer;
+    Radio radio = new Radio();
 
     /**
      * Constructor de MainGUI
@@ -50,8 +51,6 @@ public class MainGUI {
         myFrame.setLocationRelativeTo(null);
         myFrame.setResizable(false);
         myFrame.setVisible(true);
-
-        Radio radio = new Radio();
 
         btnPower.addActionListener(new ActionListener() {
             @Override
@@ -93,7 +92,49 @@ public class MainGUI {
                 lblStation.setText(String.format("%.1f", radio.nextStation()));
             }
         });
+
+        btn1.addMouseListener(new Listener());
+        btn2.addMouseListener(new Listener());
+        btn3.addMouseListener(new Listener());
+        btn4.addMouseListener(new Listener());
+        btn5.addMouseListener(new Listener());
+        btn6.addMouseListener(new Listener());
+        btn7.addMouseListener(new Listener());
+        btn8.addMouseListener(new Listener());
+        btn9.addMouseListener(new Listener());
+        btn10.addMouseListener(new Listener());
+        btn11.addMouseListener(new Listener());
+        btn12.addMouseListener(new Listener());
     }
 
+    /**
+     * Clase que se encarga de los eventos al presionar un botón numerado
+     */
+    private class Listener extends MouseAdapter {
 
+        // Crea un timer para guardar la estación al mantener presionado un botón
+        @Override
+        public void mousePressed(MouseEvent e) {
+            super.mousePressed(e);
+
+            if (radio.isOn()) {
+                timer = new Timer(2000, event -> {
+                    radio.saveData(Integer.parseInt(((JButton) e.getSource()).getText()), radio.getCurrentStation());
+                    JOptionPane.showMessageDialog(myFrame, "Se ha guardado la estación");
+                });
+
+                timer.setRepeats(false);
+                timer.start();
+            }
+        }
+
+        // Para el timer si se deja de presionar el botón
+        @Override
+        public void mouseReleased(MouseEvent e) {
+
+            if (radio.isOn()) {
+                timer.stop();
+            }
+        }
+    }
 }

@@ -8,41 +8,57 @@
 public class Radio implements IRadio {
     private boolean stateOnOff;
     private boolean stateAMFM;
-    private int[] AMButtons;
-    private int[] FMButtons;
+    private double[] AMButtons;
+    private double[] FMButtons;
     private double currentStation;
 
     /**
      * Constructor de Radio
      */
     public Radio() {
-        AMButtons = new int[12];
-        FMButtons = new int[12];
+        AMButtons = new double[12];
+        FMButtons = new double[12];
         stateOnOff = false;
         stateAMFM = true;
     }
 
-    
 
+    /**
+     * @return Estación actual de la radio
+     */
     public double getCurrentStation() {
         return currentStation;
     }
 
 
-
+    /**
+     * Modifica la estación actual de la radio
+     * @param currentStation Nueva estación
+     */
     public void setCurrentStation(double currentStation) {
         this.currentStation = currentStation;
     }
 
 
-
+    /**
+     * Guarda una estación en un botón
+     * @param buttonID Número del botón
+     * @param station Estación a guardar
+     */
     @Override
     public void saveData(int buttonID, double station) {
+        if (this.isAM()) {
+            this.AMButtons[buttonID - 1] = station;
 
+        } else {
+            this.FMButtons[buttonID - 1] = station;
+        }
     }
 
     @Override
-    public boolean isAM() {return stateAMFM;}
+    public boolean isAM() {
+        return stateAMFM;
+    }
 
     @Override
     public boolean isOn() {
