@@ -10,6 +10,7 @@ public class Radio implements IRadio {
     private boolean stateAMFM;
     private int[] AMButtons;
     private int[] FMButtons;
+    private double currentStation;
 
     /**
      * Constructor de Radio
@@ -21,16 +22,27 @@ public class Radio implements IRadio {
         stateAMFM = true;
     }
 
+    
+
+    public double getCurrentStation() {
+        return currentStation;
+    }
+
+
+
+    public void setCurrentStation(double currentStation) {
+        this.currentStation = currentStation;
+    }
+
+
+
     @Override
     public void saveData(int buttonID, double station) {
 
     }
 
     @Override
-    public boolean isAM() {
-        return stateAMFM;
-
-    }
+    public boolean isAM() {return stateAMFM;}
 
     @Override
     public boolean isOn() {
@@ -38,10 +50,7 @@ public class Radio implements IRadio {
     }
 
     @Override
-    public double selectStation(int buttonID) {
-        return buttonID;
-     
-    }
+    public double selectStation(int buttonID) {return buttonID;}
 
     /**
      * Enciende o apaga la radio
@@ -70,8 +79,26 @@ public class Radio implements IRadio {
         }
     }
 
+    /**
+     * Cambia de estación en función de si es AM o FM
+     * @return currentStation: Estación en la que se encuentra el radio
+     */
     @Override
     public double nextStation() {
-        return 0;
+        if(this.isAM()){
+            if(currentStation < 1610.0){
+                currentStation +=10;
+            } else {
+                currentStation = 530.0;
+            }
+
+        } else {
+            if(currentStation <107.9){
+                currentStation +=0.2;
+            } else {
+                currentStation = 87.9;
+            }
+        }
+        return currentStation;
     }
 }

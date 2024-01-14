@@ -272,7 +272,7 @@
               <background color="-13553587"/>
               <font name="Microsoft Tai Le" size="20"/>
               <foreground color="-788993"/>
-              <text value="Frecuencia"/>
+              <text value=""/>
               <verticalAlignment value="3"/>
             </properties>
           </component>

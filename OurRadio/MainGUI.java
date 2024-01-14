@@ -38,7 +38,7 @@ public class MainGUI {
     /**
      * Constructor de MainGUI
      */
-    public MainGUI(){
+    public MainGUI() {
         frameWidth = 900;
         frameHeight = 500;
         myFrame = new JFrame("Radio");
@@ -51,7 +51,7 @@ public class MainGUI {
         myFrame.setResizable(false);
         myFrame.setVisible(true);
 
-        Radio radio = new Radio();       
+        Radio radio = new Radio();
 
         btnPower.addActionListener(new ActionListener() {
             @Override
@@ -59,12 +59,13 @@ public class MainGUI {
 
                 if (!radio.isOn()) {
                     btnPower.setIcon(btnPower.getSelectedIcon());
-                    radio.switchOnOff();
+
                 } else {
                     btnPower.setIcon(btnPower.getDisabledIcon());
-                    radio.switchOnOff();
-                }
 
+                }
+                lblStation.setText("");
+                radio.switchOnOff();
             }
         });
         btnAmFm.addActionListener(new ActionListener() {
@@ -73,13 +74,23 @@ public class MainGUI {
                 if (radio.isOn()) {
                     if (radio.isAM()) {
                         btnAmFm.setIcon(btnAmFm.getSelectedIcon());
+                        radio.setCurrentStation(87.9);
+                        lblStation.setText(Double.toString(radio.getCurrentStation()));
 
                     } else {
                         btnAmFm.setIcon(btnAmFm.getDisabledIcon());
+                        radio.setCurrentStation(530.0);
+                        lblStation.setText(Double.toString(radio.getCurrentStation()));
                     }
 
                     radio.switchAMFM();
                 }
+            }
+        });
+        btnNextStation.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                lblStation.setText(String.format("%.1f", radio.nextStation()));
             }
         });
     }
