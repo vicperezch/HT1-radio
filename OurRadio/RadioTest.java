@@ -21,4 +21,14 @@ public class RadioTest {
         newRadio.setCurrentStation(1610.0);
         assertEquals(530.0, newRadio.nextStation());
     }
+
+    /**
+     * Test 2: Tratar de seleccionar el botón 13 devolverá una excepción tipo IndexOutOfBounds para arrays de longitud 12
+     */
+    @Test
+    public void Select13thStationIsOutOfBounds() {
+        Radio newRadio = new Radio();
+        Exception exception = assertThrows(IndexOutOfBoundsException.class, () -> newRadio.selectStation(13));
+        assertEquals("Index 12 out of bounds for length 12", exception.getMessage());
+    }
 }
