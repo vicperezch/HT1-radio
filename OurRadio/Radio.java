@@ -48,19 +48,29 @@ public class Radio implements IRadio {
      */
     @Override
     public void saveData(int buttonID, double station) {
-        if (this.isAM()) {
-            this.AMButtons[buttonID - 1] = station;
+        if (this.isOn()) {
+            if (this.isAM()) {
+                this.AMButtons[buttonID - 1] = station;
 
-        } else {
-            this.FMButtons[buttonID - 1] = station;
+            } else {
+                this.FMButtons[buttonID - 1] = station;
+            }
         }
     }
 
+    /**
+     * Retorna el modo de la radio
+     * @return boolean true si es AM, false si es FM
+     */
     @Override
     public boolean isAM() {
         return stateAMFM;
     }
 
+    /**
+     * Comprueba si la radio está encendida
+     * @return boolean true si está encendida, false si está apagada
+     */
     @Override
     public boolean isOn() {
         return stateOnOff;
