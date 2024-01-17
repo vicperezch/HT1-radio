@@ -46,7 +46,7 @@ public class RadioTest {
         // Guarda la estación 540.0 en el botón 1 y cambia a la siguiente
         newRadio.switchOnOff();
         newRadio.nextStation();
-        newRadio.saveData(1, newRadio.getCurrentStation());
+        newRadio.saveStation(1, newRadio.getCurrentStation());
 
         newRadio.nextStation();
 

@@ -6,7 +6,7 @@
  */
 
  public interface IRadio {
-    void saveData(int buttonID, double station);
+    void saveStation(int buttonID, double station);
     boolean isAM();
     boolean isOn();
     double selectStation(int buttonID);

@@ -121,7 +121,7 @@ public class MainGUI {
 
             if (radio.isOn()) {
                 timer = new Timer(2000, event -> {
-                    radio.saveData(Integer.parseInt(((JButton) e.getSource()).getText()), radio.getCurrentStation());
+                    radio.saveStation(Integer.parseInt(((JButton) e.getSource()).getText()), radio.getCurrentStation());
                     JOptionPane.showMessageDialog(myFrame, "Se ha guardado la estación");
                 });
 

@@ -47,7 +47,7 @@ public class Radio implements IRadio {
      * @param station Estación a guardar
      */
     @Override
-    public void saveData(int buttonID, double station) {
+    public void saveStation(int buttonID, double station) {
         if (this.isOn()) {
             if (this.isAM()) {
                 this.AMButtons[buttonID - 1] = station;
