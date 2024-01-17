@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="OtherRadio:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/OtherRadio_jar</output-path>
+    <root id="archive" name="OtherRadio.jar">
+      <element id="module-output" name="OtherRadio" />
+    </root>
+  </artifact>
+</component>
